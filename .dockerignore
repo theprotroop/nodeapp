@@ -1,5 +1,6 @@
 .gitignore
 .dockerignore
-.dockerfile
+Dockerfile
+Jenkinsfile
 node_modules
 README.md
