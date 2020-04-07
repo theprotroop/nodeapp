@@ -20,7 +20,7 @@ pipeline{
         stage('Deploy on local machine'){
             steps{
                 // sh "docker pull theprotroop/my-node-app:${DOCKER_TAG}"
-                sh "docker run -d -p 4000:3000 my-node-app:${DOCKER_TAG}"
+                sh "docker run -d -p 4000:3000 theprotroop/my-node-app:${DOCKER_TAG}"
             }
         }
     }
