@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mynode: 
+    build: .
+    image: mynode:latest
+    container_name: mynode
+    restart: unless-stopped
+    ports:
+    - "3000:3000"
+    #volumes:
+      #- /opt/good:/usr/src/app/files
