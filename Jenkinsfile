@@ -12,7 +12,7 @@ pipeline{
         stage('Dockerhub push'){
             steps{
                 withCredentials([string(credentialsId: 'dockerhub-password', variable: 'dockerPwd')]) {
-                    sh "docker login -u theprotroop ${dockerPwd}"
+                    sh "docker login -u theprotroop -p ${dockerPwd}"
                     sh "docker push theprotroop/my-node-app:${DOCKER_TAG}"
                 }
             }
