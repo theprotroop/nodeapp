@@ -7,7 +7,7 @@ pipeline{
         stage('Build docker and deploy image'){
             steps{
                 // sh "docker build . -t theprotroop/my-node-app:${DOCKER_TAG}"
-                sh 'docker-compose up -d --build'
+                sh "docker-compose up -d -t theprotroop/n22:${DOCKER_TAG} --build"
             }
         }
         stage('Dockerhub push'){
@@ -15,7 +15,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'dockerhub-password', variable: 'dockerPwd')]) {
                     sh 'docker login -u theprotroop -p ${dockerPwd}'
               }
-              sh "docker push theprotroop-my-node-app:${DOCKER_TAG}"
+              sh "docker push theprotroop/n22:${DOCKER_TAG}"
             }
         }
 //         stage('Deploy on local machine'){
