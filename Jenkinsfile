@@ -7,7 +7,7 @@ pipeline{
         stage('Build docker and deploy image'){
             steps{
                 // sh "docker build . -t theprotroop/my-node-app:${DOCKER_TAG}"
-                sh "docker-compose up -d -t theprotroop/n22:${DOCKER_TAG} --build"
+                sh "docker-compose up -d --build"
             }
         }
         stage('Dockerhub push'){
