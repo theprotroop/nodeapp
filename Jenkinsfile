@@ -22,7 +22,7 @@ pipeline{
                 // sh "docker pull theprotroop/my-node-app:${DOCKER_TAG}"
                 // sh "docker stop (docker ps -a -q)"
                 // sh "docker rm (docker ps -a -q)"
-                sh 'docker-compose up -d --build'
+                sh "docker-compose up -d --build"
             }
         }
     }
