@@ -2,8 +2,8 @@ version: '2'
 services:
   mynode: 
     build: .
-    image: theprotroop/my-node-app:${DOCKER_TAG}
-    container_name: theprotroop/my-node-app:${DOCKER_TAG}
+    image: theprotroop-my-node-app:${DOCKER_TAG}
+    container_name: theprotroop-my-node-app:${DOCKER_TAG}
     restart: unless-stopped
     ports:
     - "3000:3000"
