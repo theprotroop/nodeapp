@@ -1,7 +1,7 @@
 version: '2'
 services:
   mynode: 
-    build: .
+    #build: .
     image: theprotroop/my-node-app:${DOCKER_TAG}
     container_name: theprotroop/my-node-app:${DOCKER_TAG}
     restart: unless-stopped
