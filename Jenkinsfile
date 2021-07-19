@@ -4,9 +4,10 @@ pipeline{
         DOCKER_TAG = getDockerTag()
     }
     stages{
-        stage('Build docker image'){
+        stage('Build docker and deploy image'){
             steps{
-                sh "docker build . -t theprotroop/my-node-app:${DOCKER_TAG}"
+                // sh "docker build . -t theprotroop/my-node-app:${DOCKER_TAG}"
+                sh "docker-compose up -d --build"
             }
         }
         stage('Dockerhub push'){
@@ -17,14 +18,14 @@ pipeline{
               sh "docker push theprotroop/my-node-app:${DOCKER_TAG}"
             }
         }
-        stage('Deploy on local machine'){
-            steps{
-                // sh "docker pull theprotroop/my-node-app:${DOCKER_TAG}"
-                // sh "docker stop (docker ps -a -q)"
-                // sh "docker rm (docker ps -a -q)"
-                sh 'docker-compose up -d'
-            }
-        }
+//         stage('Deploy on local machine'){
+//             steps{
+//                 // sh "docker pull theprotroop/my-node-app:${DOCKER_TAG}"
+//                 // sh "docker stop (docker ps -a -q)"
+//                 // sh "docker rm (docker ps -a -q)"
+//                 sh 'docker-compose up -d'
+//             }
+//         }
     }
 }
 
