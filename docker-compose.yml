@@ -9,4 +9,4 @@ services:
     ports:
     - "3000:3000"
     #volumes:
-      #- /opt/good:/usr/src/app/files
+      #-/opt/good:/usr/src/app/files
