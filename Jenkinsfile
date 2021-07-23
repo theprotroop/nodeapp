@@ -24,7 +24,7 @@ pipeline{
                 // sh "docker rm (docker ps -a -q)"
                 sh 'docker ps -f name=nodeapp -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -fname=nodeapp -q | xargs -r docker container rm'
-                sh "docker run -d -p 4000:3000 theprotroop/nodeapp:${DOCKER_TAG}"
+                sh "docker run --name nodeapp -d -p 4000:3000 theprotroop/nodeapp:${DOCKER_TAG}"
             }
         }
     }
