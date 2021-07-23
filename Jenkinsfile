@@ -14,7 +14,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'dockerhub-password', variable: 'dockerPwd')]) {
                     sh 'docker login -u theprotroop -p ${dockerPwd}'
               }
-              sh "docker push theprotroop/my-node-app:${DOCKER_TAG}"
+                sh "docker push theprotroop/my-node-app:${DOCKER_TAG}"
             }
         }
         stage('Deploy on local machine'){
