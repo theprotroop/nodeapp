@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Build docker image'){
             steps{
-                sh "docker build . -t theprotroop/my-node-app:${DOCKER_TAG}"
+                sh "docker build . -t theprotroop/nodeapp:${DOCKER_TAG}"
             }
         }
         stage('Dockerhub push'){
@@ -14,7 +14,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'dockerhub-password', variable: 'dockerPwd')]) {
                     sh 'docker login -u theprotroop -p ${dockerPwd}'
               }
-                sh "docker push theprotroop/my-node-app:${DOCKER_TAG}"
+                sh "docker push theprotroop/nodeapp:${DOCKER_TAG}"
             }
         }
         stage('Deploy on local machine'){
@@ -22,9 +22,9 @@ pipeline{
                 // sh "docker pull theprotroop/my-node-app:${DOCKER_TAG}"
                 // sh "docker stop (docker ps -a -q)"
                 // sh "docker rm (docker ps -a -q)"
-                sh 'docker ps -f name=my-node-app -q | xargs --no-run-if-empty docker container stop'
-                sh 'docker container ls -a -fname=my-node-app -q | xargs -r docker container rm'
-                sh "docker run -d -p 4000:3000 theprotroop/my-node-app:${DOCKER_TAG}"
+                sh 'docker ps -f name=nodeapp -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=nodeapp -q | xargs -r docker container rm'
+                sh "docker run -d -p 4000:3000 theprotroop/nodeapp:${DOCKER_TAG}"
             }
         }
     }
