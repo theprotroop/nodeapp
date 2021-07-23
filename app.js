@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("<h2>My full cicd is working + full setup  </h2>");
+    res.send("<h2>docker jenkins cicd full </h2>");
 });
 
 app.listen(3000,() => {
